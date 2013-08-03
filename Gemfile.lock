@@ -1,0 +1,18 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    exercism (0.0.21)
+      faraday
+      json
+      thor
+    faraday (0.8.8)
+      multipart-post (~> 1.2.0)
+    json (1.8.0)
+    multipart-post (1.2.0)
+    thor (0.18.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  exercism
