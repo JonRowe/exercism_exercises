@@ -6,7 +6,7 @@ defmodule Teenager do
     cond do
       perceived_aggresive(text) -> "Woah, chill out!"
       asked_question(text)      -> "Sure."
-      otherwise                 -> "Whatever."
+      true                         -> "Whatever."
     end
   end
 
@@ -16,10 +16,6 @@ defmodule Teenager do
 
   def asked_question(text) do
     Regex.match?(%r/\?$/, text)
-  end
-
-  def otherwise do
-    true
   end
 
 end
