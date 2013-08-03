@@ -1,8 +1,6 @@
 defmodule Teenager do
 
-  def hey(text) when text == "" do
-    "Fine. Be that way!"
-  end
+  def hey(""),                         do: "Fine. Be that way!"
 
   def hey(text) do
     cond do
