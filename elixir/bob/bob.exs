@@ -1,9 +1,8 @@
 defmodule Teenager do
 
-  def hey(""),                         do: "Fine. Be that way!"
-
   def hey(message) do
     cond do
+      Language.is_silence?(message)   -> "Fine. Be that way!"
       Language.is_question?(message)  -> "Sure."
       Language.is_aggresive?(message) -> "Woah, chill out!"
       true                            -> "Whatever."
@@ -20,6 +19,14 @@ defmodule Language do
 
   def is_question?(message) do
     String.ends_with?(message, "?")
+  end
+
+  def is_silence?("") do
+    true
+  end
+
+  def is_silence?(message) do
+    false
   end
 
 end
