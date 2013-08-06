@@ -1,12 +1,11 @@
 class Bob
 
   def hey message
-    message.extend(Language)
-
+    language = Language.new(message)
     case
-      when message.is_blank?     then "Fine. Be that way!"
-      when message.is_aggresive? then "Woah, chill out!"
-      when message.is_question?  then "Sure."
+      when language.silence?   then "Fine. Be that way!"
+      when language.aggresive? then "Woah, chill out!"
+      when language.question?  then "Sure."
     else
       "Whatever."
     end
@@ -14,18 +13,22 @@ class Bob
 
 end
 
-module Language
+class Language
 
-  def is_aggresive?
-    upcase == self
+  def initialize text
+    @text = text
   end
 
-  def is_question?
-    end_with? '?'
+  def aggresive?
+    @text.upcase == @text
   end
 
-  def is_blank?
-    nil == self || "" == self
+  def question?
+    @text.end_with? "?"
+  end
+
+  def silence?
+    @text.nil? || @text.empty?
   end
 
 end
