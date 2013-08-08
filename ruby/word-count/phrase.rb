@@ -14,15 +14,11 @@ class Phrase
     end
 
     def words
-      stripped_text.split ' '
+      stripped_text.split /[^\w]+/
     end
 
     def stripped_text
-      cleaned_text.squeeze(' ').strip
-    end
-
-    def cleaned_text
-      lower_text.gsub %r/[^a-z0-9\s]+/, ' '
+      lower_text.squeeze(' ').strip
     end
 
     def lower_text
