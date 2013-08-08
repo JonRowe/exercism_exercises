@@ -5,7 +5,10 @@ class Phrase
   end
 
   def word_count
-    words.inject(counter_hash) { |hash,word| hash[word] += 1; hash }
+    words.inject(counter_hash) do |hash,word|
+      hash[word] += 1
+      hash
+    end
   end
 
   private
@@ -14,11 +17,7 @@ class Phrase
     end
 
     def words
-      stripped_text.split /[^\w]+/
-    end
-
-    def stripped_text
-      lower_text.squeeze(' ').strip
+      lower_text.scan /\w+/
     end
 
     def lower_text
