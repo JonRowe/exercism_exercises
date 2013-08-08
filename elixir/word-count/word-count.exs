@@ -4,15 +4,15 @@ defmodule Words do
     count_fnx = fn (word, dict) ->
       HashDict.update dict, word, 1, fn (count) -> count + 1 end
     end
-    List.foldl sane(words), HashDict.new, count_fnx
+    List.foldl list(words), HashDict.new, count_fnx
   end
 
-  def sane(words) do
-    String.split clean(words)
+  def list(words) do
+    Enum.filter split(words), fn (word) -> String.length(word) > 0 end
   end
 
-  def clean(words) do
-    Regex.replace %r/[^a-zA-Z0-9\s]+/, strip(words), ''
+  def split(words) do
+    String.split strip(words), %r/[^\w]+/
   end
 
   def strip(words) do
