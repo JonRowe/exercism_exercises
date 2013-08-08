@@ -8,15 +8,7 @@ defmodule Words do
   end
 
   def list(words) do
-    Enum.filter split(words), fn (word) -> String.length(word) > 0 end
-  end
-
-  def split(words) do
-    String.split strip(words), %r/[^\w]+/
-  end
-
-  def strip(words) do
-    Regex.replace %r/\s\+/, String.downcase(words), ' '
+    Regex.scan %r/\w+/, String.downcase(words)
   end
 
 end
