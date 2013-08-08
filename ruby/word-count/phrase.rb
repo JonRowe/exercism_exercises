@@ -14,7 +14,7 @@ class Phrase
     end
 
     def words
-      stripped_text.downcase.split ' '
+      stripped_text.split ' '
     end
 
     def stripped_text
