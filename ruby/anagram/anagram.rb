@@ -5,16 +5,12 @@ class Anagram
   end
 
   def match array
-    intersection_with_permutations(array)
-  end
-
-private
-
-  def intersection_with_permutations array
     array.select do |possible_word|
       possible_word.downcase != lowercase_word and permutations_of_word.include? possible_word.downcase
     end
   end
+
+private
 
   def permutations_of_word
     @permutations ||= lowercase_word.chars.permutation.map(&:join)
