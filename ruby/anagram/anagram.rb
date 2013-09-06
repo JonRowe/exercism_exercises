@@ -1,23 +1,23 @@
 class Anagram
 
   def initialize word
-    @word = word
+    @word = word.downcase
   end
 
   def match array
     array.select do |possible_word|
-      possible_word.downcase != lowercase_word and permutations_of_word.include? possible_word.downcase
+      where_permutations_include_but_dont_match possible_word.downcase
     end
   end
 
 private
 
-  def permutations_of_word
-    @permutations ||= lowercase_word.chars.permutation.map(&:join)
+  def where_permutations_include_but_dont_match word
+    word != @word and permutations_of_word.include? word
   end
 
-  def lowercase_word
-    @word.downcase
+  def permutations_of_word
+    @permutations ||= @word.chars.permutation.map(&:join)
   end
 
 end
