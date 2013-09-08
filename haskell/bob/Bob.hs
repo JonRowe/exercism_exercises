@@ -9,14 +9,10 @@ module Bob where
     | otherwise            = "Whatever."
 
   isAggressive :: String -> Bool
-  isAggressive message = allTrue isUpper (filter isLetter message)
+  isAggressive message = any isUpper message && all (not . isLower) message
 
   isQuestion :: String -> Bool
   isQuestion message = (last message) == '?'
 
   isSilence :: String -> Bool
-  isSilence message = all isSpace message
-
-  allTrue :: (Char -> Bool) -> String -> Bool
-  allTrue _ [] = False
-  allTrue fx list = all fx list
+  isSilence = all isSpace
