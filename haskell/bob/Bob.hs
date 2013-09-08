@@ -1,12 +1,27 @@
 module Bob where
-  responseFor message = do
-    case message of
-      Language.is_silence    message -> "Fine. Be that way!"
-      Language.is_aggresive message -> "Woah, chill out!"
-      Language.is_question  message -> "Sure."
-      _                           -> "Whatever."
+  import Data.Char
 
-module Language where
-  is_silence   text = text == ""
-  is_aggresive text = false
-  is_question  text = false
+  responseFor :: String -> String
+  responseFor message
+    | isSilence    message = "Fine. Be that way!"
+    | isAggressive message = "Woah, chill out!"
+    | isQuestion   message = "Sure."
+    | otherwise            = "Whatever."
+
+  isAggressive :: String -> Bool
+  isAggressive message = do
+    allTrue (map isUpper (filter isLetter message))
+
+  isQuestion :: String -> Bool
+  isQuestion message = do
+    (last message) == '?'
+
+  isSilence :: String -> Bool
+  isSilence "" = True
+  isSilence message = do
+    allTrue (map isSpace message)
+
+  allTrue :: [Bool] -> Bool
+  allTrue [] = False
+  allTrue list = do
+    foldr1 (&&) list
