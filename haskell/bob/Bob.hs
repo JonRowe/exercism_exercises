@@ -15,8 +15,7 @@ module Bob where
   isQuestion message = (last message) == '?'
 
   isSilence :: String -> Bool
-  isSilence "" = True
-  isSilence message = allTrue (map isSpace message)
+  isSilence message = all isSpace message
 
   allTrue :: [Bool] -> Bool
   allTrue [] = False
