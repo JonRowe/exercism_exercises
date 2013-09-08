@@ -4,10 +4,10 @@ module Bob where
   data EmotionalContent = Silence | Aggression | Question | Meh
 
   instance Show EmotionalContent where
-    show Silence = "Fine. Be that way!"
+    show Silence    = "Fine. Be that way!"
     show Aggression = "Woah, chill out!"
-    show Question = "Sure."
-    show Meh = "Whatever."
+    show Question   = "Sure."
+    show Meh        = "Whatever."
 
   responseFor :: String -> String
   responseFor message = show (classify message)
