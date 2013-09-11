@@ -19,7 +19,7 @@ class Language:
     self.message = message
 
   def is_silence(self):
-    return self.message == None or self.message.strip() == ""
+    return self.message is None or self.message.strip() == ""
 
   def is_aggresive(self):
     return self.message.isupper()
