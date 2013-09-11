@@ -1,6 +1,7 @@
 class Bob:
 
-  def hey(_, message):
+  @staticmethod
+  def hey(message):
     language = Language(message)
 
     if language.is_silence():
