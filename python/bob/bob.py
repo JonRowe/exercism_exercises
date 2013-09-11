@@ -25,4 +25,4 @@ class Language:
     return self.message.isupper()
 
   def is_question(self):
-    return self.message[-1] == '?'
+    return self.message.endswith('?')
