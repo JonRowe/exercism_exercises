@@ -21,7 +21,7 @@ class Language:
     return self.message == None or self.message.strip() == ""
 
   def is_aggresive(self):
-    return self.message == self.message.upper()
+    return self.message.isupper()
 
   def is_question(self):
     return self.message[-1] == '?'
