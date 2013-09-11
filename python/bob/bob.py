@@ -1,4 +1,4 @@
-class Bob:
+class Bob(object):
 
   @staticmethod
   def hey(message):
@@ -13,7 +13,7 @@ class Bob:
     else:
       return "Whatever."
 
-class Language:
+class Language(object):
 
   def __init__(self, message):
     self.message = message
