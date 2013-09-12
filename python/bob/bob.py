@@ -6,7 +6,7 @@ class Bob(object):
 
     if language.is_silence():
       return "Fine. Be that way!"
-    elif language.is_aggresive():
+    elif language.is_aggressive():
       return "Woah, chill out!"
     elif language.is_question():
       return "Sure."
@@ -21,7 +21,7 @@ class Language(object):
   def is_silence(self):
     return self.message is None or self.message.strip() == ""
 
-  def is_aggresive(self):
+  def is_aggressive(self):
     return self.message.isupper()
 
   def is_question(self):
