@@ -1,16 +1,16 @@
 module Bob where
   import Data.Char
 
-  data EmotionalContent = Silence | Aggression | Question | Meh
-
-  instance Show EmotionalContent where
-    show Silence    = "Fine. Be that way!"
-    show Aggression = "Woah, chill out!"
-    show Question   = "Sure."
-    show Meh        = "Whatever."
+  data EmotionalContent = Silence | Aggression | Question | Meh | Display (EmotionalContent -> String)
 
   responseFor :: String -> String
-  responseFor message = show (classify message)
+  responseFor message = display (classify message)
+
+  display :: EmotionalContent -> String
+  display Silence    = "Fine. Be that way!"
+  display Aggression = "Woah, chill out!"
+  display Question   = "Sure."
+  display Meh        = "Whatever."
 
   classify :: String -> EmotionalContent
   classify message
