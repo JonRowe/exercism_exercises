@@ -16,10 +16,10 @@ class Bob(object):
 class Language(object):
 
   def __init__(self, message):
-    self.message = message
+    self.message = message or ""
 
   def is_silence(self):
-    return self.message is None or self.message.strip() == ""
+    return not self.message.strip()
 
   def is_aggressive(self):
     return self.message.isupper()
