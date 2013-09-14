@@ -1,4 +1,4 @@
-module Bob where
+module Bob (responseFor) where
   import Data.Char
 
   data EmotionalContent = Silence | Aggression | Question | Meh | Display (EmotionalContent -> String)
