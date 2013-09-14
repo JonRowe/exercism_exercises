@@ -4,7 +4,7 @@ import Data.Char
 data EmotionalContent = Silence | Aggression | Question | Meh | Display (EmotionalContent -> String)
 
 responseFor :: String -> String
-responseFor message = display (classify message)
+responseFor = display . classify
 
 display :: EmotionalContent -> String
 display Silence    = "Fine. Be that way!"
