@@ -1,29 +1,29 @@
 module Bob (responseFor) where
-  import Data.Char
+import Data.Char
 
-  data EmotionalContent = Silence | Aggression | Question | Meh | Display (EmotionalContent -> String)
+data EmotionalContent = Silence | Aggression | Question | Meh | Display (EmotionalContent -> String)
 
-  responseFor :: String -> String
-  responseFor message = display (classify message)
+responseFor :: String -> String
+responseFor message = display (classify message)
 
-  display :: EmotionalContent -> String
-  display Silence    = "Fine. Be that way!"
-  display Aggression = "Woah, chill out!"
-  display Question   = "Sure."
-  display Meh        = "Whatever."
+display :: EmotionalContent -> String
+display Silence    = "Fine. Be that way!"
+display Aggression = "Woah, chill out!"
+display Question   = "Sure."
+display Meh        = "Whatever."
 
-  classify :: String -> EmotionalContent
-  classify message
-    | isSilence    message = Silence
-    | isAggressive message = Aggression
-    | isQuestion   message = Question
-    | otherwise            = Meh
+classify :: String -> EmotionalContent
+classify message
+  | isSilence    message = Silence
+  | isAggressive message = Aggression
+  | isQuestion   message = Question
+  | otherwise            = Meh
 
-  isAggressive :: String -> Bool
-  isAggressive message = any isUpper message && all (not . isLower) message
+isAggressive :: String -> Bool
+isAggressive message = any isUpper message && all (not . isLower) message
 
-  isQuestion :: String -> Bool
-  isQuestion message = (last message) == '?'
+isQuestion :: String -> Bool
+isQuestion message = (last message) == '?'
 
-  isSilence :: String -> Bool
-  isSilence = all isSpace
+isSilence :: String -> Bool
+isSilence = all isSpace
