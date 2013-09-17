@@ -2,18 +2,18 @@ class Bob(object):
 
   @staticmethod
   def hey(message):
-    language = Language(message)
+    tone = Tone(message)
 
-    if language.is_silence():
+    if tone.is_silence():
       return "Fine. Be that way!"
-    elif language.is_aggressive():
+    elif tone.is_aggressive():
       return "Woah, chill out!"
-    elif language.is_question():
+    elif tone.is_question():
       return "Sure."
     else:
       return "Whatever."
 
-class Language(object):
+class Tone(object):
 
   def __init__(self, message):
     self.message = message or ""
