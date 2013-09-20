@@ -1,7 +1,7 @@
 module Bob (responseFor) where
 import Data.Char
 
-data EmotionalContent = Silence | Aggression | Question | Meh | Display (EmotionalContent -> String)
+data EmotionalContent = Silence | Aggression | Question | Meh
 
 responseFor :: String -> String
 responseFor = display . classify
