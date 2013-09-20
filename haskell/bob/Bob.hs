@@ -23,7 +23,7 @@ isAggressive :: String -> Bool
 isAggressive message = any isUpper message && all (not . isLower) message
 
 isQuestion :: String -> Bool
-isQuestion message = last message == '?'
+isQuestion message = not(null message) && last message == '?'
 
 isSilence :: String -> Bool
 isSilence = all isSpace
