@@ -13,10 +13,10 @@ defmodule Anagram do
   end
 
   defp contains_all_chars?(word_a, word_b) do
-    chars(word_a) == chars(word_b)
+    normalise_to_char_list(word_a) == normalise_to_char_list(word_b)
   end
 
-  defp chars(word) do
+  defp normalise_to_char_list(word) do
     word
     |>
     String.downcase
