@@ -10,7 +10,7 @@ class Phrase(object):
     return collections.Counter(self.words())
 
   def words(self):
-    return re.compile('[^\w]+').split(self.ascii_lowercase())
+    return re.split('[^\w]+',self.ascii_lowercase())
 
   def ascii_lowercase(self):
     return re.sub('[^\w\s]+','',self.phrase.lower())
