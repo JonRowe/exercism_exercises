@@ -1,11 +1,11 @@
 defmodule Anagram do
 
   def match(word, potential_anagrams) do
-    Enum.filter potential_anagrams, &(anagram? word, &1)
-  end
-
-  defp anagram?(word, potential) do
-    are_not_identical?(word, potential) && contains_all_chars?(word, potential)
+    potential_anagrams
+    |>
+    Enum.filter( &(are_not_identical? word, &1) )
+    |>
+    Enum.filter( &(contains_all_chars? word, &1) )
   end
 
   defp are_not_identical?(word_a, word_b) do
@@ -13,10 +13,10 @@ defmodule Anagram do
   end
 
   defp contains_all_chars?(word_a, word_b) do
-    normalise_to_char_list(word_a) == normalise_to_char_list(word_b)
+    sorted_char_list(word_a) == sorted_char_list(word_b)
   end
 
-  defp normalise_to_char_list(word) do
+  defp sorted_char_list(word) do
     word
     |>
     String.downcase
