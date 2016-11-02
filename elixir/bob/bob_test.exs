@@ -52,6 +52,10 @@ defmodule BobTest do
     assert Bob.hey("") == "Fine. Be that way!"
   end
 
+  test "prolonged silence" do
+    assert Bob.hey("  ") == "Fine. Be that way!"
+  end
+
   test "only numbers" do
     assert Bob.hey("1, 2, 3") == "Whatever."
   end

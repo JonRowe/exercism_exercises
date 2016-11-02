@@ -27,7 +27,7 @@ defmodule Language do
   end
 
   def is_silence?(message) do
-    false
+    String.trim(message) == ""
   end
 
 end
