@@ -14,7 +14,8 @@ end
 defmodule Language do
 
   def is_aggresive?(message) do
-    String.upcase(message) == message
+    String.upcase(message) == message &&
+      String.downcase(message) != message
   end
 
   def is_question?(message) do
