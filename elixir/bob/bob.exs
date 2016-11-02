@@ -1,10 +1,10 @@
-defmodule Teenager do
+defmodule Bob do
 
   def hey(message) do
     cond do
       Language.is_silence?(message)   -> "Fine. Be that way!"
       Language.is_question?(message)  -> "Sure."
-      Language.is_aggresive?(message) -> "Woah, chill out!"
+      Language.is_aggresive?(message) -> "Whoa, chill out!"
       true                            -> "Whatever."
     end
   end
