@@ -1,11 +1,14 @@
 defmodule Anagram do
-
-  def match(word, potential_anagrams) do
-    potential_anagrams
+  @doc """
+  Returns all candidates that are anagrams of, but not equal to, 'base'.
+  """
+  @spec match(String.t, [String.t]) :: [String.t]
+  def match(base, candidates) do
+    candidates
     |>
-    Enum.filter( &(are_not_identical? word, &1) )
+    Enum.filter( &(are_not_identical? base, &1) )
     |>
-    Enum.filter( &(contains_all_chars? word, &1) )
+    Enum.filter( &(contains_all_chars? base, &1) )
   end
 
   defp are_not_identical?(word_a, word_b) do

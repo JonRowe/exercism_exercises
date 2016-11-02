@@ -1,5 +1,9 @@
-Code.load_file("anagram.exs")
+if !System.get_env("EXERCISM_TEST_EXAMPLES") do
+  Code.load_file("anagram.exs", __DIR__)
+end
+
 ExUnit.start
+ExUnit.configure exclude: :pending, trace: true
 
 defmodule AnagramTest do
   use ExUnit.Case
@@ -20,37 +24,42 @@ defmodule AnagramTest do
   end
 
   test "do not detect anagram subsets" do
-    matches = Anagram.match "good", %w(dog goody)
+    matches = Anagram.match "good", ~w(dog goody)
     assert matches == []
   end
 
   test "detect anagram" do
-    matches = Anagram.match "listen", %w(enlists google inlets banana)
+    matches = Anagram.match "listen", ~w(enlists google inlets banana)
     assert matches == ["inlets"]
   end
 
   test "multiple anagrams" do
-    matches = Anagram.match "allergy", %w(gallery ballerina regally clergy largely leading)
+    matches = Anagram.match "allergy", ~w(gallery ballerina regally clergy largely leading)
     assert matches == ["gallery", "regally", "largely"]
-  end
-
-  test "detect anagrams case-insensitively" do
-    matches = Anagram.match "Orchestra", %w(cashregister Carthorse radishes)
-    assert matches == ["Carthorse"]
-  end
-
-  test "anagrams must not be the source word" do
-    matches = Anagram.match "banana", ["banana"]
-    assert matches == []
-  end
-
-  test "anagrams must not be the source word case-insensitively" do
-    matches = Anagram.match "banana", ["Banana"]
-    assert matches == []
   end
 
   test "anagrams must use all letters exactly once" do
     matches = Anagram.match "patter", ["tapper"]
+    assert matches == []
+  end
+
+  test "detect anagrams with case-insensitive subject" do
+    matches = Anagram.match "Orchestra", ~w(cashregister carthorse radishes)
+    assert matches == ["carthorse"]
+  end
+
+  test "detect anagrams with case-insensitive candidate" do
+    matches = Anagram.match "orchestra", ~w(cashregister Carthorse radishes)
+    assert matches == ["Carthorse"]
+  end
+
+  test "anagrams must not be the source word" do
+    matches = Anagram.match "corn", ["corn", "dark", "Corn", "rank", "CORN", "cron", "park"]
+    assert matches == ["cron"]
+  end
+
+  test "do not detect words based on checksum" do
+    matches = Anagram.match "mass", ["last"]
     assert matches == []
   end
 end
