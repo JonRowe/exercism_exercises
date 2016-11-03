@@ -32,6 +32,11 @@ defmodule WordsTest do
     assert Words.count("testing, 1, 2 testing") == expected
   end
 
+  test "hyphens" do
+    expected = %{"co-operative" => 1}
+    assert Words.count("co-operative") == expected
+  end
+
   test "normalize case" do
     expected = %{"go" => 3}
     assert Words.count("go Go GO") == expected

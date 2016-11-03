@@ -10,7 +10,7 @@ defmodule Words do
   end
 
   defp list(words) do
-    List.flatten Regex.scan ~r/\w+/, String.downcase(words)
+    List.flatten Regex.scan ~r/[-\w]+/, String.downcase(words)
   end
 
   defp update_count(word, dict) do
