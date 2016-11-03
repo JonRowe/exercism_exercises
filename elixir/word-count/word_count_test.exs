@@ -37,6 +37,11 @@ defmodule WordsTest do
     assert Words.count("co-operative") == expected
   end
 
+  test "ignore underscores" do
+    expected = %{"two" => 1, "words" => 1}
+    assert Words.count("two_words") == expected
+  end
+
   test "normalize case" do
     expected = %{"go" => 3}
     assert Words.count("go Go GO") == expected
