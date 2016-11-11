@@ -5,10 +5,8 @@ defmodule Anagram do
   @spec match(String.t, [String.t]) :: [String.t]
   def match(base, candidates) do
     candidates
-    |>
-    Enum.filter( &(are_not_identical? base, &1) )
-    |>
-    Enum.filter( &(contains_all_chars? base, &1) )
+    |> Enum.filter( &(are_not_identical? base, &1) )
+    |> Enum.filter( &(contains_all_chars? base, &1) )
   end
 
   defp are_not_identical?(word_a, word_b) do
@@ -21,12 +19,9 @@ defmodule Anagram do
 
   defp sorted_char_list(word) do
     word
-    |>
-    String.downcase
-    |>
-    String.codepoints
-    |>
-    Enum.sort
+    |> String.downcase
+    |> String.codepoints
+    |> Enum.sort
   end
 
 end
