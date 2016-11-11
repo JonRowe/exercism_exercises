@@ -6,7 +6,7 @@ defmodule Words do
   """
   @spec count(String.t) :: map
   def count(sentence) do
-    List.foldl list(sentence), %{}, &update_count(&1, &2)
+    List.foldl list(sentence), %{}, &update_count/2
   end
 
   defp list(words) do
