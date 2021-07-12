@@ -1,7 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    addressable (2.7.0)
+    addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
     exercism (0.0.28)
       faraday (>= 0.8.8)
@@ -14,7 +14,7 @@ GEM
     launchy (2.3.0)
       addressable (~> 2.3)
     multipart-post (2.1.1)
-    public_suffix (4.0.5)
+    public_suffix (4.0.6)
     thor (1.0.1)
 
 PLATFORMS
